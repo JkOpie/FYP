@@ -23,7 +23,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/evidence', 'EvidenceController@index');
 Route::get('/evidence/{id}', 'EvidenceController@delete');
+Route::get('/evidence_search', 'EvidenceController@report_search');
 
 Route::post('/createreport', 'EvidenceController@CreateReport');
 
 Route::get('/report','EvidenceController@report');
+Route::get('/report/{id}','EvidenceController@view_event');
+Route::get('/report_delete/{id}','EvidenceController@delete_report');
+Route::get('/report_delete_evidence/{id}', 'EvidenceController@delete_evidence_report');
+Route::get('/report_search', 'EvidenceController@report_evidence_search');
+Route::get('/report_search/go', 'EvidenceController@report_search_go');
+
+
+Route::get('/pdf/{id}','EvidenceController@pdf');
+Route::get('/test_pdf/{id}', 'EvidenceController@test_pdf');
+
+Route::get('/user/{id}', 'EvidenceController@UserPage');
+Route::post('/user/image', 'EvidenceController@imageUploadPost');
+Route::post('/user/update', 'EvidenceController@UserUpdate');
+
+Route::get('/maps', 'EvidenceController@maps');
+

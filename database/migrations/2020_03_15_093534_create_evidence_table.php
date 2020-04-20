@@ -18,6 +18,7 @@ class CreateEvidenceTable extends Migration
             $table->string('DateTime')->nullable();
             $table->string('Picture')->nullable();
             $table->string('Thermal')->nullable();
+            $table->string('Temperature')->nullable();
             $table->string('Longitude')->nullable();
             $table->string('Latitude')->nullable();
             $table->timestamps();

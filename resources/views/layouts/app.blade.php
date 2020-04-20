@@ -11,23 +11,25 @@
 
     <!-- Scripts -->
 
-    <script  src="mdbjs/jquery.min.js"></script>
-    <script  src="mdbjs/popper.min.js"></script>
-    <script  src="mdbjs/bootstrap.min.js"></script>
-    <script  src="mdbjs/mdb.min.js"></script>
+    <script  src="/mdbjs/jquery.min.js"></script>
+    <script  src="/mdbjs/popper.min.js"></script>
+    <script  src="/mdbjs/bootstrap.min.js"></script>
+    <script  src="/mdbjs/mdb.min.js"></script>
 
-    <link href="mdbcss/bootstrap.min.css" rel="stylesheet">
-    <link href="mdbcss/mdb.min.css" rel="stylesheet">
-    <link href="mdbcss/style.css" rel="stylesheet">
-    <link href="mdbcss/addons-pro/timeline.min.css" rel="stylesheet">
+    <link href="/mdbcss/bootstrap.min.css" rel="stylesheet">
+    <link href="/mdbcss/mdb.min.css" rel="stylesheet">
+    <link href="/mdbcss/style.css" rel="stylesheet">
+    <link href="/mdbcss/addons-pro/timeline.min.css" rel="stylesheet">
 
-    <script src="mdbjs/addons-pro/timeline.min.js"> </script>
+    <script src="/mdbjs/addons-pro/timeline.min.js"> </script>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/6eb4b1c933.js" crossorigin="anonymous"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="https://kit.fontawesome.com/e44a6095a3.js" crossorigin="anonymous"></script>
    
 
 </head>
@@ -72,10 +74,11 @@
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img src="/userImages/{{Auth::user()->picture}}" alt="User Photo" class="img-fluid rounded-circle hoverable" width="22" height="22"> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/user/{{Auth::user()->id}}" >User Page</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

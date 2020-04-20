@@ -22,12 +22,23 @@
     <div class="card card-cascade narrower">
       <div class="view view-cascade gradient-card-header blue-gradient narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">
         <a  class="white-text mx-3"> EVIDENCE</a>
-        <div>
-         
-          <button type="button" class="btn btn-outline-white  btn-sm px-2" data-toggle="modal" data-target="#centralModalSm">
+
+        <div class="d-flex justify-content-between">
+
+          <div class="form-inline active-purple-3 active-purple-4">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input id="SearhReport" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+              aria-label="Search" onkeyup="report()" >
+          </div>
+
+          <button  class="btn btn-outline-white  btn-sm px-2" data-toggle="modal" data-target="#centralModalSm">
             Create Report
           </button>
+
         </div>
+
+          
+       
     
       </div> 
       <div class="px-4">
@@ -43,6 +54,9 @@
                 </th>
                 <th class="th-lg">
                     Thermal  
+                </th>
+                <th class="th-lg">
+                  Temperature  
                 </th>
                 <th class="th-lg">
                    Longitude
@@ -64,12 +78,13 @@
               @foreach ($evis as $evi)
               <tr>
               <td>{{$evi->DateTime}}</td>
-                <td><img src="img/{{$evi->Picture}}" width="150" height="100" class=""></td>
-                <td><img src="img/{{$evi->Thermal}}" width="150" height="100" ></td>
+                <td><img src="img/{{$evi->Picture}}" width="100" height="80" class=""></td>
+                <td><img src="img/{{$evi->Thermal}}" width="100" height="80" ></td>
+                <td>{{$evi->Temperature}}</td>
                 <td>{{$evi->Longitude}}</td>
                 <td>{{$evi->Latitude}}</td>
               <td>
-                <a type="button" class="btn btn-danger btn-rounded btn-sm m-0" href="/evidence/{{$evi->id}}">Delete</a>
+                <a type="button" class="btn btn-danger btn-rounded btn-sm m-0" href="/evidence/{{$evi->id}}"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
               </td>
               </tr>
               @endforeach
@@ -121,11 +136,37 @@
 </div>
 
    <script >
-            $('#nav_u').addClass('text-dark');
+     $(document).ready(function(){
+        $('#nav_u').addClass('text-dark');  
+    });
 
-            function next(){
-              window.location.href  = "/report";
+    function report(){
+
+      var data = $('#SearhReport').val();
+
+      console.log(data);
+
+      $.ajax({
+            type: 'GET',
+            url: '/evidence_search',
+            data: { value: data },
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            success: function(data) {
+              $('tbody').html(data.table_data);
+              
+               
+            },
+            error: function(data) {
+              console.log('error');
             }
+        });
+    }
+
+   
+      
     </script>
 
     @endsection
