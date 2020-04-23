@@ -371,13 +371,26 @@ class EvidenceController extends Controller
             }
         }
 
+    public function maps($id)
+    {
 
+        $evis = report::with('evidence')->where('id', $id)->get();
+        //return $evi;
+        return view('maps', compact('evis'));
+    }
+
+    public function flyto(Request $request){
 
        
 
-    public function maps()
-    {
-        return view('maps');
+        if($request->ajax()){
+
+            $evi = evidence2::where('id', $request->id)->get();
+            $data = array(
+                'data'  => $evi
+               );
+            echo json_encode($data);
+        }
     }
 
 

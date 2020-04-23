@@ -29,7 +29,19 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    <script src="https://kit.fontawesome.com/e44a6095a3.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e44a6095a3.js" ></script>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+    <script >
+        $('.datepicker').pickadate();
+
+        if( $('#nav_u').hasClass('text-dark')){
+                    $('#nav_u').removeClass('text-dark');
+                };
+
+    </script>
    
 
 </head>
@@ -96,20 +108,12 @@
             </div>
         </nav>
 
-        <script >
-
-        if( $('#nav_u').hasClass('text-dark')){
-                    $('#nav_u').removeClass('text-dark');
-                };
-        </script>
-        <main class="">
+      
+        
             @yield('content')
-        </main>
+      
     </div>
 
-    <script >
-        $('.datepicker').pickadate();
-
-    </script>
+    
 </body>
 </html>

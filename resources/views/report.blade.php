@@ -56,7 +56,7 @@
                   DateTime  
                 </th>
                 <th class="th-lg">
-                  Evidence
+                  Total Evidence
                 </th>
                 <th class="th-lg">
                   Event Name
@@ -90,7 +90,7 @@
                 <td>{{$report->EventDescription}}</td>
                 <td>
                     <a type="button" class="btn btn-danger btn-rounded btn-sm m-0" href="/report_delete/{{$report->id}}"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
-                    <a type="button" class="btn btn-primary btn-rounded btn-sm m-0" href="/report/{{$report->id}}"><i class="fas fa-eye fa-lg"></i> View</a>
+                    <a type="button" class="btn btn-primary btn-rounded btn-sm m-0" href="/maps/{{$report->id}}"><i class="fas fa-eye fa-lg"></i> View</a>
                     <a type="button" class="btn btn-success btn-rounded btn-sm m-0" href="/pdf/{{$report->id}}"><i class="fas fa-file-pdf fa-lg"></i> PDF</a>
                 </td>
               </tr>

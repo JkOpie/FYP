@@ -42,5 +42,5 @@ Route::get('/user/{id}', 'EvidenceController@UserPage');
 Route::post('/user/image', 'EvidenceController@imageUploadPost');
 Route::post('/user/update', 'EvidenceController@UserUpdate');
 
-Route::get('/maps', 'EvidenceController@maps');
-
+Route::get('/maps/{id}', 'EvidenceController@maps');
+Route::get('/fly/{id}', 'EvidenceController@flyto');
