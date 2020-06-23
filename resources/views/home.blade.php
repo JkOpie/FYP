@@ -64,7 +64,11 @@
                             </div>  
                         </div>
                         <div class="card-body card-body-cascade">
-                            <img src="http://192.168.137.2:8000/stream.mjpg" width="640" height="480" />
+                            <video controls width="100%" height="100%" >
+                               
+                                <source src="https://www.youtube.com/embed/lSNjKzvsxb8" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
             
                     </div>
