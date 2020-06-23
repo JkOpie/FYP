@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use App\evidence;
 use App\report;
 use App\evidence2;
@@ -96,11 +97,41 @@ class EvidenceController extends Controller
 
     public function report(){
 
-        $reports = report::with('evidence')->get();
+        $reports = report::with('evidence')->orderBy('id', 'asc')->paginate(4);
+        
+        $data = DB::table('evidence2')->select(DB::raw('count(id) as `data`'),DB::raw('YEAR(DateTime) year, MONTH(DateTime) month'))
+        ->groupby('year','month')
+        ->get();
 
-        //return $reports;
+        $data2 = DB::table('report')->select(DB::raw('count(id) as `data`'),DB::raw('YEAR(DateTime) year, MONTH(DateTime) month'))
+        ->groupby('year','month')
+        ->get();
 
-        return view('report', compact('reports'));
+        $temp10 = evidence2::where('Temperature' , "<=", 10)->count();
+        $temp20 = evidence2::where('Temperature' , ">=", 11)
+        ->where('Temperature' , "<=", 20)
+        ->count();
+        $temp30 = evidence2::where('Temperature' , ">=", 21)
+        ->where('Temperature' , "<=", 30)
+        ->count();
+        $temp40 = evidence2::where('Temperature' , ">=", 31)
+        ->where('Temperature' , "<=", 40)
+        ->count();
+        $temp50 = evidence2::where('Temperature' , ">=", 41)
+        ->where('Temperature' , "<=", 50)
+        ->count();
+
+        $temp = [ $temp10, $temp20, $temp30, $temp40, $temp50 ];
+      
+
+        //$currentMonth = date('m');
+
+        //dd($currentMonth);
+
+       
+
+        //dd($data);
+        return view('report', compact('reports', 'data', 'data2', 'temp' ));
     }
 
     public function view_event($id){
@@ -201,10 +232,11 @@ class EvidenceController extends Controller
       if($query != '')
       {
         $data = DB::table('evidence')
-        ->where('DateTime', '=', $query)
-        ->orWhere('Temperature', '=',$query)
-        ->orWhere('Longitude', '=', $query)
-        ->orWhere('Latitude', '=', $query)
+        ->where('id','LIKE', '%' .$query. '%')
+        ->orwhere('DateTime', 'LIKE', '%' .$query. '%')
+        ->orWhere('Temperature','LIKE', '%' .$query. '%')
+        ->orWhere('Longitude', 'LIKE', '%' .$query. '%')
+        ->orWhere('Latitude', 'LIKE', '%' .$query. '%')
         ->get(); 
          
       }
@@ -259,10 +291,11 @@ class EvidenceController extends Controller
         if($query != '')
          {
            $data = DB::table('evidence2')
-           ->where('DateTime', '=', $query)
-           ->orWhere('Temperature', '=',$query)
-           ->orWhere('Longitude', '=', $query)
-           ->orWhere('Latitude', '=', $query)
+           ->where('id','LIKE', '%' .$query. '%')
+           ->orwhere('DateTime','LIKE', '%' .$query. '%')
+           ->orWhere('Temperature', 'LIKE', '%' .$query. '%')
+           ->orWhere('Longitude', 'LIKE', '%' .$query. '%')
+           ->orWhere('Latitude', 'LIKE', '%' .$query. '%')
            ->get(); 
          }
 
@@ -317,13 +350,16 @@ class EvidenceController extends Controller
             {
              $output = '';
              $query = $request->get('value');
+
+             
     
             if($query != '')
              {
                $data = report::with('evidence')
-               ->where('DateTime', '=', $query)
-               ->orWhere('EventName', '=',$query)
-               ->orWhere('EventDescription', '=', $query)
+               ->where('id','LIKE', '%' .$query. '%')
+               ->orwhere('DateTime',  'LIKE', '%' .$query. '%')
+               ->orWhere('EventName','LIKE', '%' .$query. '%')
+               ->orWhere('EventDescription',  'LIKE', '%' .$query. '%')
                ->get(); 
              }
     
@@ -335,19 +371,22 @@ class EvidenceController extends Controller
 
 
              $total_row = $data->count();
+
+          
              if($total_row > 0)
              {
               foreach($data as $row)
               {
                $output .= '
                  <tr>
+                 <td>'.$row->id.'</td>
                   <td>'.$row->DateTime.'</td>
                   <td>'.$row->evidence->count().'</td>
                   <td>'.$row->EventName.'</td>
                   <td>'.$row->EventDescription.'</td>
                   <td>
                     <a type="button" class="btn btn-danger btn-rounded btn-sm m-0" href="/report_delete/'.$row->id.'"><i class="fas fa-trash-alt fa-lg"></i> Delete</a>
-                    <a type="button" class="btn btn-primary btn-rounded btn-sm m-0" href="/report/'.$row->id.'"><i class="fas fa-eye fa-lg"></i> View</a>
+                    <a type="button" class="btn btn-primary btn-rounded btn-sm m-0" href="/maps/'.$row->id.'"><i class="fas fa-eye fa-lg"></i> View</a>
                     <a type="button" class="btn btn-success btn-rounded btn-sm m-0" href="/pdf/'.$row->id.'"><i class="fas fa-file-pdf fa-lg"></i> PDF</a>
                 </td>
                  </tr>
@@ -375,7 +414,7 @@ class EvidenceController extends Controller
     {
 
         $evis = report::with('evidence')->where('id', $id)->get();
-        //return $evi;
+        // /return $evis;
         return view('maps', compact('evis'));
     }
 
@@ -392,6 +431,14 @@ class EvidenceController extends Controller
             echo json_encode($data);
         }
     }
+
+    public function evidence2_delete($id){
+
+        $evidence  = evidence2::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Evidence Deleted');
+    }
+
+
 
 
 }

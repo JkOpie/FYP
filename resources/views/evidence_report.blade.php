@@ -7,7 +7,7 @@
 <div class="col-md-10 mx-auto " style="margin-top:6%">
 
 @if (session()->get('delete'))
-  <script src="/js/toastr.js"></script>
+  
   <script>toastr["error"]("Evidence Deleted")</script>
 
 

@@ -64,11 +64,7 @@
                             </div>  
                         </div>
                         <div class="card-body card-body-cascade">
-                            <video controls width="100%" height="100%" >
-                                <source src="https://www.youtube.com/embed/lSNjKzvsxb8" type="video/mp4">
-                                <source src="https://www.youtube.com/embed/lSNjKzvsxb8" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
+                            <img src="http://192.168.137.2:8000/stream.mjpg" width="640" height="480" />
                         </div>
             
                     </div>
@@ -84,7 +80,7 @@
                         </div>
                         <div class="card-body card-body-cascade text-center">
                             <video controls width="100%" height="100%" >
-                                <source src="https://www.youtube.com/embed/lSNjKzvsxb8" type="video/mp4">
+                               
                                 <source src="https://www.youtube.com/embed/lSNjKzvsxb8" type="video/ogg">
                                 Your browser does not support the video tag.
                             </video>

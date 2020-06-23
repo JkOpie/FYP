@@ -11,5 +11,7 @@ class evidence2 extends Model
         return $this->belongsTo('App\report', 'report_id', 'id');
     }
 
+    protected $dates = ['DateTime'];
+
     protected $table = 'evidence2';
 }

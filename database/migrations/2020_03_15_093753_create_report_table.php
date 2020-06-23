@@ -15,7 +15,7 @@ class CreateReportTable extends Migration
     {
         Schema::create('report', function (Blueprint $table) {
             $table->id();
-            $table->string('DateTime')->nullable();
+            $table->dateTime('DateTime')->nullable();
             $table->string('EventName')->nullable();
             $table->string('EventDescription')->nullable();
             $table->timestamps();

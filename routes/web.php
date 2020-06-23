@@ -33,6 +33,7 @@ Route::get('/report_delete/{id}','EvidenceController@delete_report');
 Route::get('/report_delete_evidence/{id}', 'EvidenceController@delete_evidence_report');
 Route::get('/report_search', 'EvidenceController@report_evidence_search');
 Route::get('/report_search/go', 'EvidenceController@report_search_go');
+Route::get('/evidence2_delete/{id}', 'EvidenceController@evidence2_delete');
 
 
 Route::get('/pdf/{id}','EvidenceController@pdf');
@@ -44,3 +45,5 @@ Route::post('/user/update', 'EvidenceController@UserUpdate');
 
 Route::get('/maps/{id}', 'EvidenceController@maps');
 Route::get('/fly/{id}', 'EvidenceController@flyto');
+
+//Route::get('/charts', 'EvidenceController@chart');

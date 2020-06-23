@@ -10,6 +10,8 @@ class report extends Model
         'DateTime', 'EventName', 'EventDescription',
     ];
     protected $table = 'report';
+
+    protected $dates = ['DateTime'];
     
 
     public function evidence()

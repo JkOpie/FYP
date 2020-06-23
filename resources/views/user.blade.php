@@ -33,7 +33,7 @@
   
           <div class="col-lg-4 mb-4">
 
-            <div class="card card-cascade narrower" style="height:auto">
+            <div class="card card-cascade narrower" style="height:44vh">
 
               <div class="view view-cascade gradient-card-header blue-gradient mdb-color lighten-3">
                 <h5 class="mb-0 font-weight-bold">Edit Photo</h5>
@@ -42,10 +42,6 @@
               <div class="card-body card-body-cascade text-center">
                  
                   <img src="/userImages/{{$user->picture}}" alt="User Photo" class="img-fluid rounded-circle hoverable"  height="200" width="150" id="blah">
-                  
-                  
-              
-
                 <p class="text-muted"><small>Profile photo will be changed automatically</small></p>
                
                 <form class="md-form" action="/user/image" method="post" enctype="multipart/form-data">

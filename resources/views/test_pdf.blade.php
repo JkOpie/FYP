@@ -160,27 +160,27 @@ form{
           </div><!--End InvoiceTop-->
       
       
-          
+          @foreach ($users as $user)
           <div id="invoice-mid">
             
             <div >
-              <img src="C:\Users\Syaafi\Desktop\Project\fyp3\public\img\client.jpg" class="clientlogo" >
+              <img src="C:\Users\Syaafi\Desktop\Project\fyp3\public\userImages\{{$user->picture}}" class="clientlogo" >
             </div>
             <div class="info">
-              @foreach ($users as $user)
+             
               <h2>USER: {{$user->name}}</h2>
               <p>EMAIL: {{$user->email}}<br>
                 555-555-5555<br>
-              @endforeach
+            
               
               
             </div>
+            @endforeach
       
             <div id="project">
               @foreach ($evis as $evi)
             <h2>PROJECT NAME: {{$evi->EventName}}</h2>
             <p>PROJECT DESCRIPTION: {{$evi->EventDescription}}</p>
-            <p>PROJECT LOCATION: </p>
               @endforeach
             </div>   
       
@@ -194,6 +194,7 @@ form{
             <div id="table">
               <table>
                 <tr class="tabletitle">
+                  <td class="item"><h2>Event ID</h2></td>
                   <td class="item"><h2>DateTime</h2></td>
                   <td class="Hours"><h2>Picture</h2></td>
                   <td class="Rate"><h2>Thermal</h2></td>
@@ -202,6 +203,14 @@ form{
                 </tr>
                 @foreach ($evi->evidence as $item)
                 <tr class="service">
+
+                  @if ( $item->id < 10)
+
+                  <td class="tableitem"><p class="itemtext">00{{$item->id}}</p></td>
+                  @elseif($item->id > 10 && $item->id < 100)
+                  <td class="tableitem"><p class="itemtext">0{{$item->id}}</p></td>
+                  @endif
+                  
                 <td class="tableitem"><p class="itemtext">{{$item->DateTime}}</p></td>
                 <td class="tableitem"><p class="itemtext"><img src="C:\Users\Syaafi\Desktop\Project\fyp3\public\img\{{$item->Picture}}" width="100" height="50"> </p></td>
                   <td class="tableitem"><p class="itemtext"><img src="C:\Users\Syaafi\Desktop\Project\fyp3\public\img\{{$item->Thermal}}" width="100" height="50"></p></td>
