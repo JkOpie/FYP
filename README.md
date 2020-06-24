@@ -17,7 +17,7 @@ Currently, the rescue team using a multiple device to detect the location of the
 
 ## Hardware of the project
 
-Work of progress
+Work in progress
 
 
 
