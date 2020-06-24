@@ -15,6 +15,10 @@ Currently, the rescue team using a multiple device to detect the location of the
 
 <img src="https://github.com/JkOpie/FYP/blob/master/public/img/project/evidence.png" width="50%" height="300"></img><img src="https://github.com/JkOpie/FYP/blob/master/public/img/project/frontpage.png" width="50%" height="300"></img><img src="https://github.com/JkOpie/FYP/blob/master/public/img/project/reportpage.png" width="50%" height="300"></img><img src="https://github.com/JkOpie/FYP/blob/master/public/img/project/statuspage.png" width="50%" height="300"></img> 
 
+## Hardware of the project
+
+Work of progress
+
 
 
 
