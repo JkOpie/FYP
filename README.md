@@ -5,7 +5,6 @@ Currently, the rescue team using a multiple device to detect the location of the
 ## Function
 
 * Login and Register
-* 
 * Edit Profile Page 
 * Create, edit and delete evidence
 * Create, edit and delete report based on evidence
