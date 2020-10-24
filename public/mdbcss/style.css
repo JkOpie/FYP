@@ -127,4 +127,13 @@ transform: translateX(295px);
   font-family: 'Open Sans', sans-serif;
 }
 
+.custom-padding{
+  padding: 6rem 13rem 3rem 13rem !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .custom-padding{
+    padding: 6rem 2rem 3rem 2rem !important;
+  }
+}
 

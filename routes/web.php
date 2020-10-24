@@ -46,4 +46,5 @@ Route::post('/user/update', 'EvidenceController@UserUpdate');
 Route::get('/maps/{id}', 'EvidenceController@maps');
 Route::get('/fly/{id}', 'EvidenceController@flyto');
 
+Route::post('/send_key', 'SendApiController@index');
 //Route::get('/charts', 'EvidenceController@chart');
