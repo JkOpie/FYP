@@ -13,22 +13,20 @@
         
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.js"></script>
-    <script  src="/mdbjs/popper.min.js"></script>
-    <script  src="/mdbjs/bootstrap.min.js"></script>
-    <script  src="/mdbjs/mdb.min.js"></script>
+    <script  src="{{asset('/mdbjs/popper.min.js')}}"></script>
+    <script  src="{{asset('/mdbjs/bootstrap.min.js')}}"></script>
+    <script  src="{{asset('/mdbjs/mdb.min.js')}}"></script>
 
     <link href="/mdbcss/bootstrap.min.css" rel="stylesheet">
-    <link href="/mdbcss/mdb.min.css" rel="stylesheet">
+    <link href="/mdbcss/mdb.css" rel="stylesheet">
     <link href="/mdbcss/style.css" rel="stylesheet">
     <link href="/mdbcss/addons-pro/timeline.min.css" rel="stylesheet">
 
     <script src="/mdbjs/addons-pro/timeline.min.js"> </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>-->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/e44a6095a3.js" ></script>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />

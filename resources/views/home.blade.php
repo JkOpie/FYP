@@ -92,11 +92,14 @@
         testImage("http://192.168.137.202:8000/stream.mjpg");
         $('#nav_u').addClass('text-dark');
 
+        var servo1 = 6;
+        var servo2 = 6;
+
         $("body").keydown(function (event) {
             switch (event.which) {
                 case 87:
-                    //console.log("w");
-                    ajax_stp();
+                    console.log("w");
+                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
@@ -107,8 +110,8 @@
                     });
                     break;
                 case 83:
-                    //console.log("s");
-                    ajax_stp();
+                    console.log("s");
+                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
@@ -130,7 +133,7 @@
                     });
                     break;
                 case 68:
-                    ajax_stp();
+                   ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
@@ -140,54 +143,88 @@
                         success: function (result) {}
                     });
                     break;
-                case 38:
+                case 73: //i
+                //console.log(servo2);
+                if(servo2 == 0){
+                    servo2++;
+                }
+                else if( servo2 <= 12){
+                    servo2--;
+                }
+
+                console.log(servo2);
+
                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
                         data: {
                             "key": "upkey",
+                            "data" : servo2
                         },
                         success: function (result) {}
                     });
                     break;
-                case 37:
+                case 74: //j
+                //console.log(servo1);
+                if(servo1 == 0){
+                    servo1++;
+                }
+                else if( servo1 <= 12){
+                    servo1--;
+                }
+                console.log(servo1);
                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
                         data: {
                             "key": "leftkey",
+                            "data" : servo1
                         },
                         success: function (result) {}
                     });
                     break;
-                case 39:
+                case 76: //l
+                if(servo1 == 13){
+                    servo1--;
+                   
+                }else if(servo1 < 12) {
+                    servo1++;  
+                }
+                console.log(servo1);
                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
                         data: {
                             "key": "rightkey",
+                            "data" : servo1
                         },
                         success: function (result) {}
                     });
                     break;
-                case 40:
+                case 75: //k
+                if(servo2 == 13){
+                    servo2--;
+                   
+                }else if(servo2 < 12) {
+                    servo2++;  
+                }
+                console.log(servo2);
                     ajax_stp();
                     $.ajax({
                         url: "/send_key",
                         method: "POST",
                         data: {
                             "key": "downkey",
+                            "data" : servo2
                         },
                         success: function (result) {}
-                    });
+                    }); 
                     break;
             }
         });
-
-
 
         function ajax_stp() {
             $.ajaxSetup({

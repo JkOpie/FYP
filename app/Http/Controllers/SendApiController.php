@@ -13,6 +13,7 @@ class SendApiController extends Controller
         
         $response = Http::post('http://192.168.137.202:3000/', [
             'key' => $request->key,
+            'data' => $request->data
         ]);
 
         //dd($response->successful(), $response->status());
