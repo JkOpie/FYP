@@ -21,13 +21,8 @@ class HomeController extends Controller
    
     public function index(Request $request) 
     {
-        $status = Status::all();
-
-        if($request->ajax()){
-            return response()->json(array('status'=>$status));
-         }
-
+       
         //return $status;
-        return view('home', compact('status'));
+        return view('home');
     }
 }

@@ -58,6 +58,7 @@ class EvidenceController extends Controller
     }
 
     public function CreateReport(Request $request){
+
         $request->validate([
             "event_date" => "required",
             "event_name" => "required",
@@ -128,8 +129,7 @@ class EvidenceController extends Controller
 
         //dd($currentMonth);
 
-       
-
+    
         //dd($data);
         return view('report', compact('reports', 'data', 'data2', 'temp' ));
     }
@@ -436,6 +436,21 @@ class EvidenceController extends Controller
 
         $evidence  = evidence2::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Evidence Deleted');
+    }
+
+    public function create_evidence(Request $request){
+        //dd($request->all());
+
+        Evidence::create([
+            "DateTime" => Carbon::now(),
+            "Picture" => $request->camera_picture,
+            "Thermal" => $request->thermal_picture,
+            "Temperature" => $request->temperature,
+            "Longitude" => $request->long,
+            "Latitude" => $request->lat
+        ]);
+
+        return response()->json(array("evidence" => "success"));
     }
 
 

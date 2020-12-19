@@ -82,9 +82,9 @@
               <tr>
                 <td>{{$evi->id}}</td>
                 <td>{{$evi->DateTime}}</td>
-                <td><img src="img/{{$evi->Picture}}" width="100" height="80" class=""></td>
-                <td><img src="img/{{$evi->Thermal}}" width="100" height="80" ></td>
-                <td>{{$evi->Temperature}}</td>
+                <td><img src="data:image/png;base64,{{$evi->Picture}}" width="100" height="80" class=""></td>
+                <td><img src="{{$evi->Thermal}}" width="100" height="80" ></td>
+                <td>{{$evi->Temperature}} °C</td>
                 <td>{{$evi->Longitude}}</td>
                 <td>{{$evi->Latitude}}</td>
               <td>
@@ -142,30 +142,7 @@
      $(document).ready(function(){
         $('#nav_u').addClass('text-dark');  
 
-        @foreach ($evis as $evi)
-        @if($evi->Temperature >= 20 && $evi->Temperature <= 30 )
-      
-              toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "md-toast-bottom-right",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": 300,
-                "hideDuration": 10000,
-                "timeOut": 5*60000,
-                "extendedTimeOut": 5*60000,
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-                }
-              toastr["error"]("Warning : Evidence " + {{$evi->id}} + " the victim body temperature is " + {{$evi->Temperature}}+ "°C . It indicates that the victim is in great danger");
 
-              @endif
-          @endforeach
   });
 
        
@@ -187,8 +164,6 @@
             dataType: 'json',
             success: function(data) {
               $('tbody').html(data.table_data);
-              
-               
             },
             error: function(data) {
               console.log('error');

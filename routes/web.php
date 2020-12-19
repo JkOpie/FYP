@@ -24,9 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/evidence', 'EvidenceController@index');
 Route::get('/evidence/{id}', 'EvidenceController@delete');
 Route::get('/evidence_search', 'EvidenceController@report_search');
+Route::post('/create_evidence', 'EvidenceController@create_evidence');
 
 Route::post('/createreport', 'EvidenceController@CreateReport');
-
 Route::get('/report','EvidenceController@report');
 Route::get('/report/{id}','EvidenceController@view_event');
 Route::get('/report_delete/{id}','EvidenceController@delete_report');

@@ -16,8 +16,8 @@ class CreateEvidence2Table extends Migration
         Schema::create('evidence2', function (Blueprint $table) {
             $table->id();
             $table->dateTime('DateTime')->nullable();
-            $table->string('Picture')->nullable();
-            $table->string('Thermal')->nullable();
+            $table->longText('Picture')->nullable();
+            $table->longText('Thermal')->nullable();
             $table->string('Temperature')->nullable();
             $table->string('Longitude')->nullable();
             $table->string('Latitude')->nullable();
